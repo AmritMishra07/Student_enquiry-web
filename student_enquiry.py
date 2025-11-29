@@ -23,7 +23,8 @@ if st.session_state.page == 1:
     if name == "":
         st.error("Full name cannot be empty")
 
-    dob = st.date_input("Date of Birth", max_value=date.today())
+    dob = st.date_input("Date of Birth", min_value=date(1800, 1, 1), max_value=date.today())
+
 
     gender = st.selectbox("Gender", ["Select", "Male", "Female", "Other"])
     if gender == "Select":
@@ -189,3 +190,4 @@ elif st.session_state.page == 3:
 
         with open(file_name, "rb") as f:
             st.download_button("Download PDF", f, file_name, mime="application/pdf")
+
